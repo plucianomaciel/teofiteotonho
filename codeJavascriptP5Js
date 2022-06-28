@@ -1,0 +1,134 @@
+function setup() {
+  createCanvas(600, 400);
+  
+}
+
+function draw() {
+  background(220);
+  
+ //diameterR = random(2,30,200,50);
+  personagem();
+  movimentaPersonagem();
+  piscadela();
+  sal();
+  movSal();
+  randSal();
+
+  
+}
+
+// let sal 
+
+let ySal = 20
+let xSal = 20
+let diameter = 20
+let velSal = 2
+let raio = diameter / 2
+
+
+//---- Position Definition-----
+let xPos = 400; // LET = DEFINA!
+let yPos = 300;
+let xPos2 = 450;
+let xPosLin = 435;
+let xPosLin2 = 415;
+let yPosLin2 = 340;
+let yPos2 = 340;
+let yPos3 = 350;
+let pupilaL = 50;
+let pupilaR = 20;
+let lineX1 = 374;
+let lineY1 = 300;
+let lineX2 = 423;
+let lineY2 = 300;
+let lineX11 = 423;
+let lineY11 = 300;
+let lineX22 = 473;
+let lineY22 = 300;
+
+
+function sal (){ 
+  circle(xSal,ySal,diameter);
+} // bolinhas que caem 
+
+
+
+function personagem(){
+  fill(100, 100, 100); // verde
+  rect(xPos, yPos, 50, 50); //cabeca
+  fill(255, 200, 0); // amarelo
+  circle(xPos, yPos, 50); // olho esquerdo
+  fill(255, 200, 0); // amarelo
+  circle(xPos2, yPos, 50); //olho direito
+  line(xPosLin, yPos2, xPosLin2, yPosLin2); // boca
+  //circle(xPos, yPos, pupilaL);// pupila esquerda
+  fill(100, 100, 100); // verde
+  rect(xPos, yPos3, 80, 50); // corpo
+  fill(100, 200, 0); // verde
+  //circle(xPos2, yPos, pupilaR);// pupila direita
+  fill(100, 200, 0); // verde
+  
+}
+
+function movSal(){
+  ySal += velSal
+}
+
+function randSal (){
+  if(ySal + raio > height | ySal - raio < 0){
+    velSal *= -1
+  }
+}
+
+function movimentaPersonagem() {
+  if (keyIsDown(68)) {
+    xPos += 10;
+    xPos2 += 10;
+    xPosLin += 10;
+    xPosLin2 += 10;
+    lineX1 += 10;
+    lineX2 += 10;
+    lineX11 += 10;
+    lineX22 += 10;
+  }
+  if (keyIsDown(65)) {
+    xPos -= 10;
+    xPos2 -= 10;
+    xPosLin -= 10;
+    xPosLin2 -= 10;
+    lineX1 -= 10;
+    lineX2 -= 10;
+    lineX11 -= 10;
+    lineX22 -= 10;
+  }
+  if (keyIsDown(83)) {
+    yPos3 += 10;
+    yPos2 += 10;
+    yPos += 10;
+    yPosLin2 += 10;
+    lineY1 += 10;
+    lineY2 += 10;
+    lineY11 += 10;
+    lineY22 += 10;
+  }
+  if (keyIsDown(87)) {
+    yPos3 -= 10;
+    yPos2 -= 10;
+    yPos -= 10;
+    yPosLin2 -= 10;
+    lineY1 -= 10;
+    lineY2 -= 10;
+    lineY11 -= 10;
+    lineY22 -= 10;
+  }
+}
+function piscadela() {
+  if (keyIsPressed == true && key == "z") {
+    line(lineX1, lineY1, lineX2, lineY2);
+    line(lineX11, lineY11, lineX22, lineY22);
+  } else {
+    // Otherwise, draw an ellipse
+    circle(xPos, yPos, 20);
+    circle(xPos2, yPos, pupilaR);
+  }
+}
